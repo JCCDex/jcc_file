@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+- 8.11.4
+after_success:
+- npm run coveralls
+env:
+  global:
+    secure: W+bUcZwzG/4towq5J1otg/2nRsrsjKZwBAALh7j4h24rKStE3x9yMxn5Mc91p+zX2XbbeavWD+HkAzoYo1hc6HDcgXvJEbfbWj/09vLnKbv4C/uRT0D/OPPX+Zc0BOEwThRD2ZEKO+4kDpCR/EKYKImbVPaT1+8Rm/qpuQP+kTigyRhnbhJgU7z0lpdzX68nFu6BmP4c4sYN36t6wHEt4TKH+9NSdqlOTzrJdAO2FVfHg/pHEQLfhyl2KeNUjkJVxBbPPn82RoPm4vkTacvLu/MBf6dtvl2Lmt32VGbE2xa6J5jw6Ik5FrXiQTOI/wls2Amr2nWBOsgozp0dvKRqj2CyO9i1T1L6+M+LqdWeqlc8syIldJ8EuBNBOWQt7JjnUy874+WZWqDTzC0x+eNmny+RxURGu1S2Pvbq22jg9qG/e26RdgJwcjm6XMXd+RTi5UJB/jHyH2ol8yPZ+o7F8Iaz6WSL97lKNszGVTvHCD9mALdw9Hj1+FgVCvhAjELUCnwiKM+AUbJn62wzq5uJB+UN+bejmefvawCl9CA1ltdzSrt99C6s8BlcqkEnleZw4WZaabi4g84zS0l9ndjAaY0v0rracRvZGDT/56ApsI9a9ckHRtdVIXb4qEaat4+U1vW/AsC0c9qKpom7/LblzJuQvm/Bj/F8EaCOJ0uwHBE=
