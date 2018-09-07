@@ -1,6 +1,6 @@
 {
   "name": "jcc_file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "import and export file of jcc",
   "main": "lib/index.js",
   "scripts": {

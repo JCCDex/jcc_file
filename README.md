@@ -47,7 +47,7 @@ Parameters
 
 ### exportToQR
 
-export text content to text file
+export text content to qrcode image
 
 ```javascript
 const exportToQR = require('jcc_file').exportToQR
