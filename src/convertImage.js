@@ -1,5 +1,6 @@
 'use strict';
 
+const jsQR = require('jsqr');
 class ConvertBase64 {
     constructor() {
         this.canvas = document.createElement("canvas");
@@ -10,7 +11,7 @@ class ConvertBase64 {
     getImageData(base64) {
         return new Promise((resolve, reject) => {
             if (!base64) {
-                reject(new Error('the argument is invalid'));
+                return reject(new Error('the argument is invalid'));
             }
             let image = this.image;
             let canvas = this.canvas;
@@ -25,7 +26,7 @@ class ConvertBase64 {
                         canvas.width,
                         canvas.height
                     );
-                    resolve(imageData);
+                    return resolve(imageData);
                 },
                 false
             );
@@ -39,4 +40,22 @@ class ConvertBase64 {
     }
 }
 
-module.exports = ConvertBase64;
+/**
+ * decode base64
+ * @param {string} base64
+ */
+const convertImage = async (base64) => {
+    let convert = new ConvertBase64();
+    let data;
+    try {
+        let imageData = await convert.getImageData(base64);
+        let code = jsQR(imageData.data, imageData.width, imageData.height);
+        data = code.data.trim();
+    } catch (error) {
+        data = null;
+    }
+    convert.destroy();
+    return data
+}
+
+module.exports = convertImage;

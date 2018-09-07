@@ -25,27 +25,8 @@ SOFTWARE.
  * @author https://github.com/GinMu
  */
 
-const jsQR = require('jsqr');
-const ConvertBase64 = require('./convertBase64');
+const convertImage = require('./convertImage');
 const generateQR = require('./generateQR');
-
-/**
- * decode base64
- * @param {string} base64
- */
-const convertImage = async (base64) => {
-    let convert = new ConvertBase64();
-    let data;
-    try {
-        let imageData = await convert.getImageData(base64);
-        let code = jsQR(imageData.data, imageData.width, imageData.height);
-        data = code.data.trim();
-    } catch (error) {
-        data = null;
-    }
-    convert.destroy();
-    return data
-}
 
 /**
  * import file
