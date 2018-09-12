@@ -15,7 +15,7 @@ npm install jcc_file
 
 ### importFile
 
-import file to get result, if we need, we aslo could decode qrcode image.
+import file to get result, if we need, we also could decode qrcode image.
 
 ```javascript
 const importFile = require('jcc_file').importFile
