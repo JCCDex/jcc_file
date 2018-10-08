@@ -68,9 +68,9 @@ const importFile = (event, needConvert = false) => {
  * @param {string} name
  */
 const exportToQR = (text, name = 'weidex') => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
-            let url = generateQR(text);
+            let url = await generateQR(text);
             let a = document.createElement("a");
             let e = new MouseEvent("click");
             a.download = name.replace(/\./g, "_");
