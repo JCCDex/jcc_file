@@ -5,6 +5,12 @@
 [![Coverage Status](https://coveralls.io/repos/github/JCCDex/jcc_file/badge.svg?branch=master)](https://coveralls.io/github/JCCDex/jcc_file?branch=master)
 [![npm downloads](https://img.shields.io/npm/dm/jcc_file.svg)](http://npm-stat.com/charts.html?package=jcc_file)
 
+将文件内容或者二维码图片导入，获取文本内容，或者将文本内容导出成文件或者图片。在威链平台通常用这个工具来导入导出keystore格式的钱包。
+
+井畅应用交流群: 557524730
+
+JCCDex Tech support QQ group ID: 557524730
+
 ## Installtion
 
 ```shell
