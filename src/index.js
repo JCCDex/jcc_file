@@ -34,32 +34,32 @@ const generateQR = require('./generateQR');
  * @param {boolean} needConvert
  */
 const importFile = (event, needConvert = false) => {
-    let files = event.target.files || event.dataTransfer.files;
-    return new Promise((resolve, reject) => {
-        if (files.length) {
-            let file = files[0];
-            let reader = new FileReader();
-            if (/image+/.test(file.type)) {
-                reader.onload = async () => {
-                    let data;
-                    if (needConvert) {
-                        data = await convertImage(reader.result);
-                    } else {
-                        data = reader.result;
-                    }
-                    return resolve(data);
-                };
-                reader.readAsDataURL(file);
-            } else {
-                reader.onload = () => {
-                    return resolve(reader.result);
-                };
-                reader.readAsText(file);
-            }
-        } else {
-            return reject(new Error('files is empty'));
-        }
-    })
+  const files = event.target.files || event.dataTransfer.files;
+  return new Promise((resolve, reject) => {
+    if (files.length) {
+      const file = files[0];
+      const reader = new FileReader();
+      if (/image+/.test(file.type)) {
+        reader.onload = async () => {
+          let data;
+          if (needConvert) {
+            data = await convertImage(reader.result);
+          } else {
+            data = reader.result;
+          }
+          return resolve(data);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        reader.onload = () => {
+          return resolve(reader.result);
+        };
+        reader.readAsText(file);
+      }
+    } else {
+      return reject(new Error('files is empty'));
+    }
+  })
 }
 
 /**
@@ -68,19 +68,19 @@ const importFile = (event, needConvert = false) => {
  * @param {string} name
  */
 const exportToQR = (text, name = 'weidex') => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let url = await generateQR(text);
-            let a = document.createElement("a");
-            let e = new MouseEvent("click");
-            a.download = name.replace(/\./g, "_");
-            a.href = url;
-            a.dispatchEvent(e);
-            return resolve();
-        } catch (error) {
-            return reject(error);
-        }
-    })
+  return new Promise(async (resolve, reject) => {
+    try {
+      const url = await generateQR(text);
+      const a = document.createElement("a");
+      const e = new MouseEvent("click");
+      a.download = name.replace(/\./g, "_");
+      a.href = url;
+      a.dispatchEvent(e);
+      return resolve();
+    } catch (error) {
+      return reject(error);
+    }
+  })
 }
 
 /**
@@ -89,23 +89,23 @@ const exportToQR = (text, name = 'weidex') => {
  * @param {string} name
  */
 const exportToText = (text, name = 'weidex') => {
-    return new Promise((resolve, reject) => {
-        try {
-            let a = document.createElement("a");
-            let blob = new Blob([text]);
-            let e = new MouseEvent("click");
-            a.download = name.replace(/\./g, "_");
-            a.href = URL.createObjectURL(blob);
-            a.dispatchEvent(e);
-            return resolve();
-        } catch (error) {
-            return reject(error);
-        }
-    })
+  return new Promise((resolve, reject) => {
+    try {
+      const a = document.createElement("a");
+      const blob = new Blob([text]);
+      const e = new MouseEvent("click");
+      a.download = name.replace(/\./g, "_");
+      a.href = URL.createObjectURL(blob);
+      a.dispatchEvent(e);
+      return resolve();
+    } catch (error) {
+      return reject(error);
+    }
+  })
 }
 
 exports = module.exports = {
-    importFile,
-    exportToQR,
-    exportToText
+  importFile,
+  exportToQR,
+  exportToText
 }
